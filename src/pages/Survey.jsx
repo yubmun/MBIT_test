@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from "styled-components"
 import Button from '../components/Button'
 import Question from '../components/Question'
+import { useContext } from "react";
+import { commonData } from '../App';
 
 const SurveyStyle = styled.section`
   display: flex;
@@ -44,25 +46,58 @@ const ButtonWrap = styled.div`
   display: flex;
   justify-content: space-between;
 `
+const MoveButton = styled.button`
+  width: 100px;
+  height: 40px;
+  background-color: #9b51e0;
+  color: white;
+  box-shadow: 0px 0px 4px rgba(0,0,0,0.5);
+  border-radius: 10px;
+  border: none;
+  transition: .2s;
+  cursor: pointer;
+  &:hover {
+    background-color: #ffffff;
+    color: #9b51e0;
+  }
+`
 
 function Survey() {
+  const {question} = useContext(commonData);
+  console.log({question});
+  const [number, setNumber] = useState(1);
+  const [answerNumber, setAnswerNumber] = useState(1);
+  const clickNext = (e) => {
+    setNumber(number + 1);
+    setAnswerNumber(answerNumber + 4);
+  }
+  const clickPrev = (e) => {
+    setNumber(number - 1);
+    setAnswerNumber(answerNumber - 4);
+  }
   return (
     <SurveyStyle>
       <StatusBarStyle>
-        <span>2/10</span>
+        <span>{number}/10</span>
         <div></div>
       </StatusBarStyle>
       <SurveyQWrap>
         <h2>
-          Q. 여러분의 서비스가 성공하였다면, 서비스를 성공시킨 요소는?
+          Q. {question.questions[number - 1].content}
         </h2>
 
-        <Question/>
+        <Question number={number} answerNumber={answerNumber}/>
 
         <ButtonWrap>
-        <Button name="purple" value="이전"/>
-        <Button name="purple" value="다음" to="/result"/>
+
+          <MoveButton onClick={clickPrev}>이전</MoveButton>
+          {
+            number < 10 ? <MoveButton onClick={clickNext}>다음</MoveButton> : <MoveButton>다음없음</MoveButton>
+          }
         </ButtonWrap>
+        {
+          number === 10 ? <Button name="white" value="결과 보러가기" to="/result"/> : null
+        }
       </SurveyQWrap>
     </SurveyStyle>
   );

@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from "styled-components";
+import { useContext } from "react";
+import { commonData } from '../App';
 
 const SurveyQ = styled.form`
   font-size: 14px;
@@ -20,29 +22,31 @@ const SurveyQ = styled.form`
 
 `
 
-function Question() {
+function Question(props) {
+  const {question} = useContext(commonData);
+
   return (
     <SurveyQ>
     <ol>
       <li>
         <input type="radio"  name='question1' id='one' />
-        <label htmlFor="one">1. 데이터 분석을 통한 효과적인 개인 맞춤형 서비스</label>
+        <label htmlFor="one">1. {question.answers[props.answerNumber - 1].content}</label>
       </li>
       <li>
         <input type="radio" name='question1' id='two'/>
-        <label htmlFor="two">2. 화려하거나 품격있는 디자인, 흥미로운 콘텐츠 제작</label>
+        <label htmlFor="two">2. {question.answers[props.answerNumber].content}</label>
       </li>
       <li>
         <input type="radio" name='question1' id='three'/>
-        <label htmlFor="three">3. 게임적인(Gameification)요소 도입</label>
+        <label htmlFor="three">3. {question.answers[props.answerNumber + 1].content}</label>
       </li>
       <li>
         <input type="radio" name='question1' id='four'/>
-        <label htmlFor="four">4. 안정적인 서비스 운용</label>
+        <label htmlFor="four">4. {question.answers[props.answerNumber + 2].content}</label>
       </li>
       <li>
         <input type="radio" name='question1' id='five'/>
-        <label htmlFor="five">5. 믿을 수 있는 정보 관리</label>
+        <label htmlFor="five">5. {question.answers[props.answerNumber + 3].content}</label>
       </li>
     </ol>
   </SurveyQ>
