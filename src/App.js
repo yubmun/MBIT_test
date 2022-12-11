@@ -1,8 +1,11 @@
+import { Reset } from "styled-reset" 
+
 function App() {
   return (
-    <div>
+    <>
+      <Reset/>
       hello world
-    </div>
+    </>
   );
 }
 export default App;
