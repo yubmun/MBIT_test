@@ -22,36 +22,55 @@ const SurveyQ = styled.form`
   }
 
 `
+const SurveyTitle = styled.title`
+  position: absolute;
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+`
 
 function Question(props) {
   const {question} = useContext(commonData);
 
   return (
     <SurveyQ>
-    <ol>
-      <li>
-        <input type="radio"  name='question1' id='one' />
-        <label htmlFor="one">1. {question.answers[props.answerNumber - 1].content}</label>
-      </li>
-      <li>
-        <input type="radio" name='question1' id='two'/>
-        <label htmlFor="two">2. {question.answers[props.answerNumber].content}</label>
-      </li>
-      <li>
-        <input type="radio" name='question1' id='three'/>
-        <label htmlFor="three">3. {question.answers[props.answerNumber + 1].content}</label>
-      </li>
-      <li>
-        <input type="radio" name='question1' id='four'/>
-        <label htmlFor="four">4. {question.answers[props.answerNumber + 2].content}</label>
-      </li>
-      <li>
-        <input type="radio" name='question1' id='five'/>
-        <label htmlFor="five">5. {question.answers[props.answerNumber + 3].content}</label>
-      </li>
-    </ol>
-  </SurveyQ>
-  )
+      <SurveyTitle>질문폼</SurveyTitle>
+      <ol>
+        <li>
+          <input type="radio" name="question1" id="one" />
+          <label htmlFor="one">
+            1. {question.answers[props.answerNumber - 1].content}
+          </label>
+        </li>
+        <li>
+          <input type="radio" name="question1" id="two" />
+          <label htmlFor="two">
+            2. {question.answers[props.answerNumber].content}
+          </label>
+        </li>
+        <li>
+          <input type="radio" name="question1" id="three" />
+          <label htmlFor="three">
+            3. {question.answers[props.answerNumber + 1].content}
+          </label>
+        </li>
+        <li>
+          <input type="radio" name="question1" id="four" />
+          <label htmlFor="four">
+            4. {question.answers[props.answerNumber + 2].content}
+          </label>
+        </li>
+        <li>
+          <input type="radio" name="question1" id="five" />
+          <label htmlFor="five">
+            5. {question.answers[props.answerNumber + 3].content}
+          </label>
+        </li>
+      </ol>
+    </SurveyQ>
+  );
 }
 
 export default Question
