@@ -57,6 +57,7 @@ const ResultDesc = styled.div`
   & li {
     position: relative;
     padding-left: 6px;
+    line-height: 20px;
   }
   & li::before{
     content:'';

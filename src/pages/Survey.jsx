@@ -74,6 +74,7 @@ function Survey() {
   console.log({question});
   const [number, setNumber] = useState(1);
   const [answerNumber, setAnswerNumber] = useState(1);
+  
   const clickNext = (e) => {
     setNumber(number + 1);
     setAnswerNumber(answerNumber + 4);
@@ -101,7 +102,7 @@ function Survey() {
 
           <MoveButton onClick={clickPrev}>이전</MoveButton>
           {
-            number < 10 ? <MoveButton onClick={clickNext}>다음</MoveButton> : <MoveButton>다음없음</MoveButton>
+            number < 10 ? <MoveButton onClick={clickNext} type="submit">다음</MoveButton> : <MoveButton>다음없음</MoveButton>
           }
         </ButtonWrap>
         {
