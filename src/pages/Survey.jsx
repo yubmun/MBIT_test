@@ -29,6 +29,12 @@ const StatusBarStyle = styled.div`
     background-color: #ffffff;
   }
 `
+const Gage = styled.span`
+      position: absolute;
+      width: ${(props) => props.number * 30}px;
+      height: 6px;
+      background-color: #9b51e0;
+`
 const SurveyQWrap = styled.div`
   display: flex;
   flex-direction: column;
@@ -80,7 +86,9 @@ function Survey() {
     <SurveyStyle>
       <StatusBarStyle>
         <span>{number}/10</span>
-        <div></div>
+        <div>
+          <Gage number={number}></Gage>
+        </div>
       </StatusBarStyle>
       <SurveyQWrap>
         <h2>
