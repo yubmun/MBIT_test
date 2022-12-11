@@ -39,6 +39,7 @@ const SurveyQWrap = styled.div`
     font-size: 16px;
     font-weight: 900;
     line-height: 23px;
+    height: 50px;
   }
 `
 const ButtonWrap = styled.div`

@@ -10,7 +10,8 @@ const SurveyQ = styled.form`
   & ol {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 20px;
+    height: 280px;
   }
   & ol > li > label, input{
     cursor: pointer;
