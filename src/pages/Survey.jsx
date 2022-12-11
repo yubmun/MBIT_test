@@ -100,7 +100,9 @@ function Survey() {
 
         <ButtonWrap>
 
-          <MoveButton onClick={clickPrev}>이전</MoveButton>
+          {
+            number === 1 ? <MoveButton>이전</MoveButton> : <MoveButton onClick={clickPrev}>이전</MoveButton>
+          }
           {
             number < 10 ? <MoveButton onClick={clickNext} type="submit">다음</MoveButton> : <MoveButton>다음없음</MoveButton>
           }
