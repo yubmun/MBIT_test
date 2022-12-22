@@ -1,8 +1,9 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import styled from "styled-components"
 import resultImg from "../assets/img/result1.png"
 import Button from '../components/Button'
 import { commonData } from '../App'
+import Loading from './Loading'
 
 const ResultWraaper = styled.section`
   display: flex;
@@ -72,6 +73,10 @@ const ResultDesc = styled.div`
 `
 
 function Result() {
+
+  useEffect(() => {
+    setInterval(()=> {return <Loading/>}, 2000)
+  },[])
 
   const {answer} = useContext(commonData);
   console.log({answer}.answer[0].title);
